@@ -18,7 +18,7 @@ class produitsTableSeeder extends Seeder
         $produit=new \app\produit();
         $produit->nom="veste zara";
         $produit->prix="25";
-        $produit->description="veste zara coton noir"
-        $produit->photo_principale=""
+        $produit->description="veste zara coton noir";
+        
     }
 }
