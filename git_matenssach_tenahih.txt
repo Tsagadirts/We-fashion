@@ -1,0 +1,4 @@
+git status => 3fayss li tbadlo
+git add --a => tajouti ga3 la3fayess li tbadli
+git commit -m "mon commentaire" => pour commiter 
+git push => bach teb3to lel github
