@@ -18,11 +18,11 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'price' => $this->faker->numberBetween(15,300)*100,
+            'price' => $this->faker->randomFloat($nbMaxDecimals = 1, $min = 5, $max = 100),
             'description' => $this->faker->sentence(),
-            'visibilité'=>$this->faker->randomElement($array = array ('publié','non publié')),//reste a confirmer
-            'etat'=>$this->faker->randomElement($array = array ('standard','solde')),//reste a confirmer
-            'reference'=>$this->faker->regexify('[A-Z0-9]+@[A-Z0-9]+\.[A-Z]{2,4}') //reste a confirmer
+            'visibilité' => $this->faker->randomElement($array = array ('publié','non publié')),
+            'etat' => $this->faker->randomElement($array = array ('standard','sold')),
+            'reference' => $this->faker->regexify('[A-Z0-9]+[A-Z0-9]+\.[A-Z]{2,4}')
         ];
     }
 }

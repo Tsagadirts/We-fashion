@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// on importe le namespace du controller qui servira a connecter les méthodes au routes
 use App\Http\Controllers\ProductController;
 
 
@@ -15,9 +16,26 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+// route dynamique product/8 product/1 => pour récupérer l'idée product
+Route::get('/products', [ProductController::class, 'index'])->name('sold');
+
+// vous pouvez faire du binding avec le modèle id => instance de la classe Category
+// les routes sont avec paramètre (id de la category à afficher )
+// Route::get('/category/{category}', [ProductController::class, 'showCate'])->name('sex');
+
+Route::get('/sex/{name}', [ProductController::class, 'showSex'])->name('sex');
+
+// Route::get('/category/{category}', [ProductController::class, 'showCate'])->name('homme');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/boutique', [ProductController::class, 'index'])->name('boutique');
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
