@@ -26,5 +26,15 @@ class ProductController extends Controller
         return view("categories.index", ['products' => $products, 'category' => $category]);
 
     }
+
+    public function create()
+    {
+        return view('formulaire.form');
+    }
+ 
+    public function store(Request $request)
+    {
+        return 'Le nom est ' . $request->input('nom');
+    }
 }
 

@@ -14,6 +14,7 @@
         <li> {{$product->etat}} </li> 
         <li> {{$product->reference}} </li>
         <li> {{$product->categories[0]["sex"]}} </li>
-    </ul>      '
+    </ul> 
+         
 @endforeach
 @endsection
