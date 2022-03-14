@@ -7,11 +7,12 @@
 {{-- ICI affichez les noms des produits, vérifiez qu'ils existent avant --}}
 {{-- Faire un foreach Laravel pour afficher --}}
     <ul>
-        <li> {{$product->name}}</li> 
+        <li><a href="/products/show/{{$product->id}}">{{$product->name}}</a></li> 
         <li> {{$product->price}}</li> 
         <li> {{$product->description}} </li> 
-        <li> {{$product->visibilité}} </li> 
-        <li> {{$product->etat}} </li> 
+        <li> <img src="{{asset('storage/images/'.$product->image)}}"> </li> 
+        <li> {{$product->visibility}} </li> 
+        <li> {{$product->state}} </li> 
         <li> {{$product->reference}} </li>
         <li> {{$product->categories[0]["sex"]}} </li>
     </ul> 

@@ -44,3 +44,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //les routes pour le formulaire
 Route::get('/products/add', [ProductController::class, 'create']);
 Route::post('/products/add', [ProductController::class, 'store']);
+
+Route::get('/products/show/{id}', [ProductController::class, 'show']);
+Route::post('/products/edit', [ProductController::class, 'edit']);
+
+Route::get('/products/destroy/{id}', [ProductController::class, 'destroy']);
+

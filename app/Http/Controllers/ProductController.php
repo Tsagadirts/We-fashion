@@ -28,12 +28,12 @@ class ProductController extends Controller
         return view("categories.index", ['products' => $products, 'category' => $category]);
 
     }
-
+    //création du formulaire
     public function create()
     {
         return view('formulaire.form');
     }
- 
+    //envoyer les information du formulaire
     public function store(Request $request)
     {
         $validatedData = $request->validateWithBag('products', [
@@ -56,7 +56,50 @@ class ProductController extends Controller
         
         
         $product->save();
-        return redirect('formulaire.form')->withErrors($validatedData, 'formulaire.form');
+        return redirect()->back()->with('success','Votre produit a bien été ajouté');
 
     }
+    //afficher la page de produit avec les infos
+    public function show(Request $request)
+    {
+        $id=$request->route('id');
+        $product = Product::find($id);
+        
+        return view('products.show', ['product'=>$product]);
+    }
+
+    //modifier le produit
+    public function edit(Request $request)
+    {
+        $id=$request->route('id');
+        $product = Product::find($id);
+        return view('products.edit', ['product'=>$product]);
+    }
+
+    //supprimer un produit
+    public function destroy(Request $request)
+    {
+        $id=$request->route('id');
+        Product::find($id)->delete();
+        return 'ok';  //faire la redirection
+    }
+    
+    //update le formulaire
+    public function update(Request $request, product $product)
+    {
+        $request->validate([
+            'name' => 'required',
+            'price' => ['required'],
+            'description'=>['required'],
+            'visibility'=>['required'],
+            'state'=>['required']
+        ]);
+    
+        $product->update($request->all());
+    
+        return redirect()->route('product.index')
+                        ->with('success','Post updated successfully');
+    }
 }
+    
+    

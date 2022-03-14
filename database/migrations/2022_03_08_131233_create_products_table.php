@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id(); // clé primaire
             $table->string('name');
             $table->text('description')->nullable(); // TEXT NULL
-            $table->boolean('visibility');
+            $table->string('visibility');
             $table->string('state');
             $table->text('reference');
             $table->decimal('price', 5, 2)->nullable();
+            $table->string('image');
             $table->timestamps();
         
         });
