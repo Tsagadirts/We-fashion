@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id(); // clé primaire
             $table->string('name');
             $table->text('description')->nullable(); // TEXT NULL
-            $table->string('visibilité');
-            $table->string('etat');
+            $table->boolean('visibility');
+            $table->string('state');
             $table->text('reference');
             $table->decimal('price', 5, 2)->nullable();
             $table->timestamps();

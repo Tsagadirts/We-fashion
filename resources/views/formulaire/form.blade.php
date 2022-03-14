@@ -1,30 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ url('products/add') }}" method="POST" class="w-50">
+@if(Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+        @php
+            Session::forget('success');
+        @endphp
+    </div>
+@endif
+    <form action="{{ url('products/add') }}" method="POST" class="w-50 ms-3">
         @csrf
-        <div>
+        <div class="mb-3">
             <label class="form-label" for="name">Entrez le Nom du Produit : </label>
-            <input class="form-control" type="text" name="nom" id="name">
+            <input class="form-control" type="text" name="name" id="name">
         </div>
-        <div>
-            <label class="form-label" for="state">Entrez l'etat du Produit : </label>
-            <input class="form-control" type="text" name="etat" id="state">
+        
+        <div class="mb-3">
+            <label class="form-label" for="price">Entrez le Prix du Produit en centimes : </label>
+            <input class="form-control" type="number" name="price" id="price">
         </div>
-        <div>
-            <label class="form-label" for="price">Entrez le Prix du Produit : </label>
-            <input class="form-control" type="text" name="nom" id="price">
-        </div>
-        <div>
+        <div class="mb-3">
             <label class="form-label" for="description">Entrez la description du Produit : </label>
-            <input class="form-control" type="textarea" name="description" id="description">
+            <textarea class="form-control" type="textarea" name="description" id="description"></textarea> 
         </div>
-        <div>
+        <div class="mb-3">
             <label class="form-label" for="image">Télecharger l'image du produit : </label>
-            <input class="form-control" type="file" name="nom" id="image">
+            <input class="form-control" type="file" name="image" id="image" accept="image/*">
         </div>
+        
+        
+        <div class="form-group border border-dark mb-3 px-1">
+            <label for="sex">Choisisez votre categorie</label>
+            <select class="form-control" name="sex" id="sex">
+                <!-- <option selected>Choisisez votre categorie</option>  -->
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+            </select>
+        </div>   
+
+        <div class="form-group border border-dark mb-3 px-1">
+            <label for="state">l'etat du produit</label>
+            <select class="form-control" name="state" id="state">
+                <!-- <option selected>Choisisez votre categorie</option>  -->
+                <option value="sold">Sold</option>
+                <option value="standard">Standard</option>
+            </select>
+        </div>   
+        <div class="form-group border border-dark mb-3 px-1">
+            <label for="visibility">Visibility</label>
+            <select class="form-control" name="visibility" id="visibility">
+                <!-- <option selected>Choisisez votre categorie</option>  -->
+                <option value="1">Publié</option>
+                <option value="0">Non publié</option>
+            </select>
+        </div>
+        
         <div>
             <input type="submit" value="Envoyer !">
         </div>
+        
     </form>
 @endsection
