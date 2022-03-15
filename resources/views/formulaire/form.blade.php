@@ -37,7 +37,20 @@
                 <option value="homme">Homme</option>
                 <option value="femme">Femme</option>
             </select>
-        </div>   
+        </div>  
+        
+        <div class="form-group border border-dark mb-3 px-1">
+            <label for="size">Choisisez votre taille</label>
+            <select class="form-control" name="size" id="size">
+                <!-- <option selected>Choisisez votre categorie</option>  -->
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+            </select>
+        </div>
 
         <div class="form-group border border-dark mb-3 px-1">
             <label for="state">l'etat du produit</label>

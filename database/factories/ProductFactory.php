@@ -19,6 +19,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'price' => $this->faker->randomFloat($nbMaxDecimals = 1, $min = 5, $max = 100),
+            'size' => $this->faker->randomElement($array = array ('Xs','M','L','XL','XXL')),
             'description' => $this->faker->sentence(),
             'visibility' => $this->faker->randomElement($array = array ('publié','non publié')),
             'state' => $this->faker->randomElement($array = array ('standard','sold')),

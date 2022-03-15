@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id(); // clé primaire
             $table->string('name');
+            $table->string('size');
             $table->text('description')->nullable(); // TEXT NULL
             $table->string('visibility');
             $table->string('state');
