@@ -14,7 +14,10 @@ class ProductController extends Controller
         // on va appeler les différents products
         return view('products.index', ['products' => Product::all()]);
     }
-
+    public function showstate(string $state) {
+        $products=Product::where('state',$state)->get();
+        return view("products.index", ['products' => $products]);
+    }
     public function showSex(string $sex){
         // on va appeler les différents categories
         $category = Category::where('sex', $sex)->get();
@@ -45,7 +48,7 @@ class ProductController extends Controller
             'image'=>['required']
         ]);
         
-        //dd($request->file('image')->getClientOriginalName());
+        
         if($request->file()) {
             $name = time().'_'.$request->file('image')->getClientOriginalName();
             $filePath = $request->file('image')->storeAs('images', $name, 'public');
@@ -109,7 +112,6 @@ class ProductController extends Controller
         ]);
         
         $product=Product::find($id);
-       
         $product->update([
                 "name" => $request->get('name'),
                 "price" => $request->get('price'),
@@ -118,8 +120,10 @@ class ProductController extends Controller
                 "state" => $request->get('state'),
                 "size"=>$request->get('size'),
         ]);
-    
-        return back()->with('success','Post updated successfully');
+        
+        $product->categories()->update(['category_id'=>$request->get('sex')]);
+        $product->save();
+        return view('products.show',['product' => $product])->with('success','Post updated successfully');
     }
 }
     

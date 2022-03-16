@@ -27,6 +27,10 @@
                 <strong>Description:</strong>
                 {{ $product->description }}
             </div>
+            <div class="form-group">
+                <strong>Categorie:</strong>
+                {{$product->categories[0]["sex"]}}
+            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">

@@ -23,7 +23,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('productsInde
 // vous pouvez faire du binding avec le modèle id => instance de la classe Category
 // les routes sont avec paramètre (id de la category à afficher )
 // Route::get('/category/{category}', [ProductController::class, 'showCate'])->name('sex');
-
+Route::get('/state/{state}', [ProductController::class, 'showstate'])->name('sold');
 Route::get('/sex/{sex}', [ProductController::class, 'showSex'])->name('sex');
 
 // Route::get('/category/{category}', [ProductController::class, 'showCate'])->name('homme');

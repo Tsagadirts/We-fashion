@@ -35,7 +35,7 @@
                     </a>
                     <a class="navbar-brand" href={{route('sex', 'femme') }}> FEMME
                     </a>
-                    <a class="navbar-brand" href="{{ url('/products') }}"> SOLD
+                    <a class="navbar-brand" href="{{route('sold', 'sold') }}"> SOLD
                     </a>
                     <ul class="navbar-nav me-auto">
 

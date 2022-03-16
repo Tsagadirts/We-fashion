@@ -35,12 +35,12 @@
             <label for="sex">Choisisez votre categorie</label>
             <select class="form-control" name="sex" id="sex">
                 <!-- <option selected>Choisisez votre categorie</option>  -->
-                @if("{{$product->categorie}}"=="Homme")
-                    <option value="Homme" selected>Homme</option>
-                    <option value="Femme" >Femme</option>
+                @if("{{$product->categorie}}"=="1")
+                    <option value="1" selected>Homme</option>
+                    <option value="2" >Femme</option>
                 @else
-                    <option value="Homme">Homme</option>
-                    <option value="Femme" selected>Femme</option>
+                    <option value="1">Homme</option>
+                    <option value="2" selected>Femme</option>
                 @endif
             </select>
         </div>  
