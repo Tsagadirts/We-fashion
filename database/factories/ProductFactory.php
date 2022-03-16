@@ -24,7 +24,7 @@ class ProductFactory extends Factory
             'visibility' => $this->faker->randomElement($array = array ('publié','non publié')),
             'state' => $this->faker->randomElement($array = array ('standard','sold')),
             'reference' => $this->faker->regexify('[A-Z0-9]+[A-Z0-9]+\.[A-Z]{2,4}'),
-            'image' => $this->faker->image(storage_path('/app/public/images'),640,480, null, false),
+            'image' => $this->faker->image(storage_path('/app/public/images'),200,200, null, false),
         ];
     }
 }

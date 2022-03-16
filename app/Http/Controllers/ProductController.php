@@ -15,9 +15,9 @@ class ProductController extends Controller
         return view('products.index', ['products' => Product::all()]);
     }
 
-    public function showSex(string $name){
+    public function showSex(string $sex){
         // on va appeler les différents categories
-        $category = Category::where('sex', $name)->get();
+        $category = Category::where('sex', $sex)->get();
 
         $products = [];
         // récuperé les ids des categories hommes et femmes
@@ -25,7 +25,7 @@ class ProductController extends Controller
             $products = $category[0]->products;
         }
         // on retourne les products dans chaque category
-        return view("categories.index", ['products' => $products, 'category' => $category]);
+        return view("products.index", ['products' => $products]);
 
     }
     //création du formulaire
@@ -42,22 +42,29 @@ class ProductController extends Controller
             'description'=>['required'],
             'visibility'=>['required'],
             'state'=>['required'],
-        ]);
-
-        $product = new Product([
-            "name" => $request->get('name'),
-            "price" => $request->get('price'),
-            "description" => $request->get('description'),
-            "visibility" => $request->get('visibility'),
-            "state" => $request->get('state'),
-            "reference" => 'ref'.time()
-
+            'image'=>['required']
         ]);
         
-        
-        $product->save();
-        return redirect()->back()->with('success','Votre produit a bien été ajouté');
-
+        //dd($request->file('image')->getClientOriginalName());
+        if($request->file()) {
+            $name = time().'_'.$request->file('image')->getClientOriginalName();
+            $filePath = $request->file('image')->storeAs('images', $name, 'public');
+            $product =  Product::create([
+                "name" => $request->get('name'),
+                "price" => $request->get('price'),
+                "description" => $request->get('description'),
+                "visibility" => $request->get('visibility'),
+                "state" => $request->get('state'),
+                "reference" => 'ref'.time(),
+                "size"=>$request->get('size'),
+                'image'=> $name
+    
+            ])->categories()->attach([$request->get('sex')]);
+     
+            return redirect()->back()->with('success','Votre produit a bien été ajouté');
+    
+        }
+       
     }
     //afficher la page de produit avec les infos
     public function show(Request $request)
@@ -80,25 +87,39 @@ class ProductController extends Controller
     public function destroy(Request $request)
     {
         $id=$request->route('id');
+        
         Product::find($id)->delete();
-        return 'ok';  //faire la redirection
+        return redirect()->route('productsIndex')
+                        ->with('success','Produit a été supprimé avec succés');
     }
     
     //update le formulaire
-    public function update(Request $request, product $product)
+    public function update(Request $request)
     {
+        $id=$request->route('id');
+        
         $request->validate([
-            'name' => 'required',
+            'name' => ['required'],
             'price' => ['required'],
             'description'=>['required'],
             'visibility'=>['required'],
-            'state'=>['required']
+            'state'=>['required'],
+            "size"=>['required'],
+            // 'image'=>['required']
+        ]);
+        
+        $product=Product::find($id);
+       
+        $product->update([
+                "name" => $request->get('name'),
+                "price" => $request->get('price'),
+                "description" => $request->get('description'),
+                "visibility" => $request->get('visibility'),
+                "state" => $request->get('state'),
+                "size"=>$request->get('size'),
         ]);
     
-        $product->update($request->all());
-    
-        return redirect()->route('product.index')
-                        ->with('success','Post updated successfully');
+        return back()->with('success','Post updated successfully');
     }
 }
     

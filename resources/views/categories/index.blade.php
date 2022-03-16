@@ -1,14 +1,13 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
-@foreach ($products as $product)
+<a class="btn btn-info ms-3 mb-3" href="{{route('addCategory') }}">Ajouter nouvelle categorie</a>
+@foreach ($catego as $category)
 <ul>
-        <li> {{$product->name}}</li> 
-        <li> {{$product->price}}</li> 
-        <li> {{$product->description}} </li> 
-        <li> {{$product->visibilité}} </li> 
-        <li> {{$product->etat}} </li> 
-        <li> {{$product->reference}} </li>
+        
+    <li><a href="/categories/index/show/{{$category->id}}"> {{$category->sex}}</a></li>
+    <li>{{$category->description}} </li>     
+        
     </ul>      
 
 @endforeach

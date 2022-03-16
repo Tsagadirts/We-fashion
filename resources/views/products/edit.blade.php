@@ -9,8 +9,8 @@
         @endphp
     </div>
 @endif
-
-    <form action="{{ url('products/add') }}" method="POST" class="w-50 ms-3">
+        
+    <form action="{{ url('/products/update',$product->id) }}" method="POST" class="w-50 ms-3">
         @csrf
         <div class="mb-3">
             <label class="form-label" for="name">Entrez le Nom du Produit : </label>

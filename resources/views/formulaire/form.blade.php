@@ -9,7 +9,7 @@
         @endphp
     </div>
 @endif
-    <form action="{{ url('products/add') }}" method="POST" class="w-50 ms-3">
+    <form action="{{ url('products/add') }}" method="post" enctype="multipart/form-data" class="w-50 ms-3">
         @csrf
         <div class="mb-3">
             <label class="form-label" for="name">Entrez le Nom du Produit : </label>
@@ -34,8 +34,8 @@
             <label for="sex">Choisisez votre categorie</label>
             <select class="form-control" name="sex" id="sex">
                 <!-- <option selected>Choisisez votre categorie</option>  -->
-                <option value="homme">Homme</option>
-                <option value="femme">Femme</option>
+                <option value="1">Homme</option>
+                <option value="2">Femme</option>
             </select>
         </div>  
         

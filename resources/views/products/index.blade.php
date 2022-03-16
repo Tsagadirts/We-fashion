@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
- @foreach ($products as $product)
+@if(Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+        @php
+            Session::forget('success');
+        @endphp
+    </div>
+@endif
+<a class="btn btn-info ms-3 mb-3" href="{{route('addProduct') }}">Ajouter nouveau produit</a>
+@foreach ($products as $product)
 {{-- Rendre cliquable le titre suivant $product->id --}}
 {{-- <p>This is product <a href="{{ route('product', $product) }}">{{ $product->name }}</a></p> --}}
 {{-- ICI affichez les noms des produits, vérifiez qu'ils existent avant --}}
