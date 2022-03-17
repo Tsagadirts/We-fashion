@@ -80,9 +80,30 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="album py-5 bg-light">
             @yield('content')
         </main>
     </div>
+<footer>
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container">
+            <ul><a href="#" class="navbar-brand">informations</a>
+                <li>Mentions légales</li>
+                <li>Presse</li>
+                <li>Fabrication</li>
+            </ul>
+            <ul><a href="#" class="navbar-brand">service client</a>
+                <li>Contactez-nous</li>
+                <li>Livraison & Retour</li>
+                <li>Conditions de vente</li>
+            </ul>
+            <ul><a href="#" class="navbar-brand">réseaux sociaux</a>
+                <li>facebook</li>
+                <li>instagram</li>
+                <li>inscrivez vous à la newsletter</li>
+            </ul>
+        </div>
+    </nav>
+</footer>    
 </body>
 </html>
