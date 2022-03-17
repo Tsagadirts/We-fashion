@@ -12,12 +12,19 @@ class ProductController extends Controller
 {
     public function index(){
         // on va appeler les différents products
-        return view('products.index', ['products' => Product::all()]);
+        return view('products.index', ['products' => Product::all()]);  
     }
+
+    public function adminIndex(){
+        // on va appeler les différents products
+        return view('products.showAdmin', ['products' => Product::all()]);
+    }
+
     public function showstate(string $state) {
         $products=Product::where('state',$state)->get();
         return view("products.index", ['products' => $products]);
     }
+
     public function showSex(string $sex){
         // on va appeler les différents categories
         $category = Category::where('sex', $sex)->get();

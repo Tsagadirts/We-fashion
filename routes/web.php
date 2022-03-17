@@ -42,21 +42,24 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //les routes pour le produit
-Route::get('/products/add', [ProductController::class, 'create'])->name('addProduct');
-Route::post('/products/add', [ProductController::class, 'store']);
+Route::get('/products/add', [ProductController::class, 'create'])->name('addProduct')->middleware('auth');
+Route::post('/products/add', [ProductController::class, 'store'])->middleware('auth');
 
 Route::get('/products/show/{id}', [ProductController::class, 'show']);
-Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
+Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->middleware('auth');
 Route::post('/products/update/{id}', [ProductController::class, 'update']);
-Route::get('/products/destroy/{id}', [ProductController::class, 'destroy']);
+Route::get('/products/destroy/{id}', [ProductController::class, 'destroy'])->middleware('auth');
 
 //les routes pour la categorie
 Route::get('/categories/index', [CategoryController::class, 'index']);
-Route::get('/categories/index/add', [CategoryController::class, 'create'])->name('addCategory');
-Route::post('/categories/index/add', [CategoryController::class, 'store']);
+Route::get('/categories/index/add', [CategoryController::class, 'create'])->name('addCategory')->middleware('auth');
+Route::post('/categories/index/add', [CategoryController::class, 'store'])->middleware('auth');
 
 Route::get('/categories/index/show/{id}', [CategoryController::class, 'show']);
-Route::get('/categories/index/edit/{id}', [CategoryController::class, 'edit']);
-Route::post('/categories/index/update/{id}', [CategoryController::class, 'update']);
-Route::get('/categories/index/destroy/{id}', [CategoryController::class, 'destroy']);
+Route::get('/categories/index/edit/{id}', [CategoryController::class, 'edit'])->middleware('auth');
+Route::post('/categories/index/update/{id}', [CategoryController::class, 'update'])->middleware('auth');
+Route::get('/categories/index/destroy/{id}', [CategoryController::class, 'destroy'])->middleware('auth');
+//route pour l'admin
+Route::get('/admin/products', [ProductController::class, 'adminIndex'])->name('admin');
+
 
