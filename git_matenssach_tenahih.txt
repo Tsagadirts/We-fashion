@@ -2,3 +2,10 @@ git status => 3fayss li tbadlo
 git add --a => tajouti ga3 la3fayess li tbadli
 git commit -m "mon commentaire" => pour commiter 
 git push => bach teb3to lel github
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_fashion
+DB_USERNAME=root
+DB_PASSWORD=
